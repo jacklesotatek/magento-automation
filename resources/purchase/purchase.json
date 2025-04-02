@@ -1,0 +1,31 @@
+{
+  "email": "jackle4@gmail.com",
+  "password": "test@123!",
+  "category": "Men",
+  "menTopJacketProductInformation": {
+    "subCategory": "Tops",
+    "secondSubCategory": "Jackets"
+  },
+  "menBottomsPantProductInformation": {
+    "subCategory": "Bottoms",
+    "secondSubCategory": "Pants"
+  },
+  "firstProductInformation": {
+    "productName": "Proteus Fitness Jackshirt",
+    "size": "XS",
+    "color": "Black"
+  },
+  "secondProductInformation": {
+    "productName": "Montana Wind Jacket",
+    "size": "XS",
+    "color": "Green"
+  },
+  "bottomProductInformation": {
+    "productName": "Cronus Yoga Pant",
+    "size": "32",
+    "color": "Black"
+  },
+  "shippingMethod": "Best Way",
+  "firstName": "Jack",
+  "lastName": "Le"
+}
