@@ -1,12 +1,12 @@
+import { MyOrderPage } from "@pages/account/myOrder.page";
 import { BasePage } from "@pages/base.page";
+import { ReviewAndPaymentPage } from "@pages/checkout/reviewAndPayment.page";
+import { ShippingPage } from "@pages/checkout/shipping.page";
 import { HomePage } from "@pages/home/home.page";
-import { SigninPage } from "@pages/signIn/signIn.page";
 import { ProductPage } from "@pages/product/product.page";
 import { ProductDetailPage } from "@pages/product/productDetail.page";
 import { ShoppingCartPage } from "@pages/shoppingCart/shoppingCart.page";
-import { ShippingPage } from "@pages/checkout/shipping.page";
-import { ReviewAndPaymentPage } from "@pages/checkout/reviewAndPayment.page";
-import { MyOrderPage } from "@pages/account/myOrder.page";
+import { SigninPage } from "@pages/signIn/signIn.page";
 import { test as baseTest } from "@playwright/test";
 
 export type PageFixtureType = {
@@ -24,7 +24,6 @@ export type PageFixtureType = {
 type ExtendParams = Parameters<typeof baseTest.extend<PageFixtureType>>;
 
 export const pageFixture: ExtendParams[0] = {
-
   basePage: async ({ page }, use) => {
     await use(new BasePage(page));
   },

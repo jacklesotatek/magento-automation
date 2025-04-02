@@ -12,10 +12,16 @@ export class Assertions {
    * @example
    * Assertions.assertEqual(await page.locator('.example').textContent(), 'Expected Text', 'Text content matches expected.');
    */
-  static assertEqual(actualText: unknown, expectedText: unknown, message: string) {
+  static assertEqual(
+    actualText: unknown,
+    expectedText: unknown,
+    message: string
+  ) {
     try {
       expect(actualText).toBe(expectedText);
-      Logger.info(`Assertion passed: ${message}\nActual Result:   '${actualText}'\nExpected Result: '${expectedText}'`);
+      Logger.info(
+        `Assertion passed: ${message}\nActual Result:   '${actualText}'\nExpected Result: '${expectedText}'`
+      );
     } catch (error) {
       Logger.error(
         `Assertion failed: ${message}\nActual Result:   '${actualText}'\nExpected Result: '${expectedText}'`
@@ -36,32 +42,39 @@ export class Assertions {
   static assertTrue(actualValue: boolean, message: string) {
     try {
       expect(actualValue).toBeTruthy();
-      Logger.info(`Assertion passed: ${message}\nActual Result:   ${actualValue}\nExpected Result: true`);
+      Logger.info(
+        `Assertion passed: ${message}\nActual Result:   ${actualValue}\nExpected Result: true`
+      );
     } catch (error) {
-      Logger.error(`Assertion failed: ${message}\nActual Result:   ${actualValue}\nExpected Result: true`);
+      Logger.error(
+        `Assertion failed: ${message}\nActual Result:   ${actualValue}\nExpected Result: true`
+      );
       throw error;
     }
   }
 
   /**
- * Asserts that a boolean value is false.
- * This function logs a message and throws an error if the assertion fails.
- *
- * @param actualValue - The boolean value to be asserted as false.
- * @param message - A message to log for the assertion result.
- * @example
- * Assertions.assertFalse(user.isLoggedIn, 'User should be logged in.');
- */
+   * Asserts that a boolean value is false.
+   * This function logs a message and throws an error if the assertion fails.
+   *
+   * @param actualValue - The boolean value to be asserted as false.
+   * @param message - A message to log for the assertion result.
+   * @example
+   * Assertions.assertFalse(user.isLoggedIn, 'User should be logged in.');
+   */
   static assertFalse(actualValue: boolean, message: string) {
     try {
       expect(actualValue).toBeFalsy();
-      Logger.info(`Assertion passed: ${message}\nActual Result:   ${actualValue}\nExpected Result: true`);
+      Logger.info(
+        `Assertion passed: ${message}\nActual Result:   ${actualValue}\nExpected Result: true`
+      );
     } catch (error) {
-      Logger.error(`Assertion failed: ${message}\nActual Result:   ${actualValue}\nExpected Result: true`);
+      Logger.error(
+        `Assertion failed: ${message}\nActual Result:   ${actualValue}\nExpected Result: true`
+      );
       throw error;
     }
   }
-
 
   /**
    * Asserts that the actual text is equal to the expected text.
@@ -73,13 +86,19 @@ export class Assertions {
    * @example
    * Assertions.assertContain(await page.locator('.example').textContent(), 'Expected Text', 'Text content matches expected.');
    */
-  static async assertContain(actualTextLocator: Locator, expectedText: string, message: string) {
+  static async assertContain(
+    actualTextLocator: Locator,
+    expectedText: string,
+    message: string
+  ) {
     let actualText = "";
     try {
       actualText = await actualTextLocator.innerText();
       const regex = new RegExp(expectedText);
       await expect(actualTextLocator).toHaveText(regex);
-      Logger.info(`Assertion passed: ${message}\nActual Result:   '${actualText}'\nExpected Result: '${expectedText}'`);
+      Logger.info(
+        `Assertion passed: ${message}\nActual Result:   '${actualText}'\nExpected Result: '${expectedText}'`
+      );
     } catch (error) {
       Logger.error(
         `Assertion failed: ${message}\nActual Result:   '${actualText}'\nExpected Result: '${expectedText}'\nError: ${error}`
@@ -89,19 +108,23 @@ export class Assertions {
   }
 
   /**
-* Asserts that a locator is visible
-* This function logs a message and throws an error if the assertion fails.
-*
-* @param element - The locator value to be asserted as true.
-* @param message - A message to log for the assertion result.
-* @example
-*/
+   * Asserts that a locator is visible
+   * This function logs a message and throws an error if the assertion fails.
+   *
+   * @param element - The locator value to be asserted as true.
+   * @param message - A message to log for the assertion result.
+   * @example
+   */
   static assertLocatorVisible(element: Locator, message: string) {
     try {
       expect(element).toBeVisible();
-      Logger.info(`Assertion passed: ${message}\nActual Result:   ${element}\nExpected Result: true`);
+      Logger.info(
+        `Assertion passed: ${message}\nActual Result:   ${element}\nExpected Result: true`
+      );
     } catch (error) {
-      Logger.error(`Assertion failed: ${message}\nActual Result:   ${element}\nExpected Result: true`);
+      Logger.error(
+        `Assertion failed: ${message}\nActual Result:   ${element}\nExpected Result: true`
+      );
       throw error;
     }
   }
