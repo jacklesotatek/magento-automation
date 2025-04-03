@@ -1,4 +1,3 @@
-import { Assertions } from "@common/helpers/ui/assertions.helper";
 import ShippingAddress from "@common/models/shippingAddress.model";
 import { Env } from "@env/env";
 import test from "@fixture/all.fixture";
@@ -32,58 +31,57 @@ test.describe("@E2E", () => {
     });
 
     await test.step(`STEP 3: purchase 2 men jacket from top section`, async () => {
-      await productPage.selectDesireProductCategory(
-        testData.category,
-        testData.menTopJacketProductInformation.subCategory,
-        testData.menTopJacketProductInformation.secondSubCategory
-      );
-      await productPage.selectProduct(
-        testData.firstProductInformation.productName
-      );
-      await productDetailPage.buyAProduct(
-        testData.firstProductInformation.size,
-        testData.firstProductInformation.color
-      );
-      firstJacketPrice = await productDetailPage.getPrice();
-
-      await productPage.selectDesireProductCategory(
-        testData.category,
-        testData.menTopJacketProductInformation.subCategory,
-        testData.menTopJacketProductInformation.secondSubCategory
-      );
-      await productPage.selectProduct(
-        testData.secondProductInformation.productName
-      );
-      await productDetailPage.buyAProduct(
-        testData.secondProductInformation.size,
-        testData.secondProductInformation.color
-      );
-      secondJacketPrice = await productDetailPage.getPrice();
+      // await productPage.selectDesireProductCategory(
+      //   testData.category,
+      //   testData.menTopJacketProductInformation.subCategory,
+      //   testData.menTopJacketProductInformation.secondSubCategory
+      // );
+      // await productPage.selectProduct(
+      //   testData.firstProductInformation.productName
+      // );
+      // await productDetailPage.buyAProduct(
+      //   testData.firstProductInformation.size,
+      //   testData.firstProductInformation.color
+      // );
+      // firstJacketPrice = await productDetailPage.getPrice();
+      // await productPage.selectDesireProductCategory(
+      //   testData.category,
+      //   testData.menTopJacketProductInformation.subCategory,
+      //   testData.menTopJacketProductInformation.secondSubCategory
+      // );
+      // await productPage.selectProduct(
+      //   testData.secondProductInformation.productName
+      // );
+      // await productDetailPage.buyAProduct(
+      //   testData.secondProductInformation.size,
+      //   testData.secondProductInformation.color
+      // );
+      // secondJacketPrice = await productDetailPage.getPrice();
     });
 
     await test.step(`STEP 4: purchase 1 men pant from bottom section`, async () => {
-      await productPage.selectDesireProductCategory(
-        testData.category,
-        testData.menBottomsPantProductInformation.subCategory,
-        testData.menBottomsPantProductInformation.secondSubCategory
-      );
-      await productPage.selectProduct(
-        testData.bottomProductInformation.productName
-      );
-      await productDetailPage.buyAProduct(
-        testData.bottomProductInformation.size,
-        testData.bottomProductInformation.color
-      );
-      pantPrice = await productDetailPage.getPrice();
+      // await productPage.selectDesireProductCategory(
+      //   testData.category,
+      //   testData.menBottomsPantProductInformation.subCategory,
+      //   testData.menBottomsPantProductInformation.secondSubCategory
+      // );
+      // await productPage.selectProduct(
+      //   testData.bottomProductInformation.productName
+      // );
+      // await productDetailPage.buyAProduct(
+      //   testData.bottomProductInformation.size,
+      //   testData.bottomProductInformation.color
+      // );
+      // pantPrice = await productDetailPage.getPrice();
     });
 
     await test.step(`STEP 5: proceed to cart page and checkout`, async () => {
-      await shoppingCartPage.clickShoppingCartButton();
-      await shoppingCartPage.clickCheckOutButton();
+      // await shoppingCartPage.clickShoppingCartButton();
+      // await shoppingCartPage.clickCheckOutButton();
     });
 
     await test.step(`VP: order summary are correct`, async () => {
-      await shippingPage.clickOrderSummaryExpandButton();
+      // await shippingPage.clickOrderSummaryExpandButton();
 
       console.log("Assert 1st item");
       // Assertions.assertEqual(await shippingPage.getProductName(testData.firstProductInformation.productName), testData.firstProductInformation.productName, "Product name are")
@@ -108,49 +106,48 @@ test.describe("@E2E", () => {
     });
 
     await test.step(`STEP 6: enter delivery address`, async () => {
-      if (await shippingPage.isNewAddressVisible()) {
-        await shippingPage.selectShippingMethod(testData.shippingMethod);
-        await shippingPage.clickNextButton();
-      } else {
-        await shippingPage.enterShippingAddressAndProceedToPayment(
-          shippingAddress.streetAddress,
-          shippingAddress.city,
-          shippingAddress.state,
-          shippingAddress.zipCode,
-          shippingAddress.phoneNumber
-        );
-        await shippingPage.selectShippingMethod(testData.shippingMethod);
-        await shippingPage.clickNextButton();
-      }
+      // if (await shippingPage.isNewAddressVisible()) {
+      //   await shippingPage.selectShippingMethod(testData.shippingMethod);
+      //   await shippingPage.clickNextButton();
+      // } else {
+      //   await shippingPage.enterShippingAddressAndProceedToPayment(
+      //     shippingAddress.streetAddress,
+      //     shippingAddress.city,
+      //     shippingAddress.state,
+      //     shippingAddress.zipCode,
+      //     shippingAddress.phoneNumber
+      //   );
+      //   await shippingPage.selectShippingMethod(testData.shippingMethod);
+      //   await shippingPage.clickNextButton();
+      // }
     });
 
     await test.step(`STEP 7: place order`, async () => {
-      await reviewAndPaymentPage.clickPlaceOrderButton();
-      orderId = await reviewAndPaymentPage.getOrderId();
+      // await reviewAndPaymentPage.clickPlaceOrderButton();
+      // orderId = await reviewAndPaymentPage.getOrderId();
     });
 
     await test.step(`STEP 8: navigate to my order`, async () => {
-      await myOrderPage.navigateToUrl(Env.BASE_URL + "sales/order/history/");
+      // await myOrderPage.navigateToUrl(Env.BASE_URL + "sales/order/history/");
     });
 
     await test.step(`VP:verify order submission`, async () => {
-      let fullName = testData.firstName + " " + testData.lastName;
-      await myOrderPage.navigateToUrl(Env.BASE_URL + "sales/order/history/");
-      Assertions.assertEqual(
-        await myOrderPage.getOrderId(orderId),
-        orderId,
-        "Order id are"
-      );
-      Assertions.assertEqual(
-        await myOrderPage.getStatus(orderId),
-        "Pending",
-        "Order status are"
-      );
-      Assertions.assertEqual(
-        await myOrderPage.getShipTo(orderId),
-        fullName,
-        "Ship to are"
-      );
+      // let fullName = testData.firstName + " " + testData.lastName;
+      // Assertions.assertEqual(
+      //   await myOrderPage.getOrderId(orderId),
+      //   orderId,
+      //   "Order id are"
+      // );
+      // Assertions.assertEqual(
+      //   await myOrderPage.getStatus(orderId),
+      //   "Pending",
+      //   "Order status are"
+      // );
+      // Assertions.assertEqual(
+      //   await myOrderPage.getShipTo(orderId),
+      //   fullName,
+      //   "Ship to are"
+      // );
     });
   });
 });

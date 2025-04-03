@@ -10,7 +10,6 @@ class ProductPage extends BasePage {
     const categoryLocator = this.page.locator(
       `//nav//li[a/span[text()='${category}']]`
     );
-    await categoryLocator.waitFor({ state: "visible" });
     await categoryLocator.hover();
   }
 
@@ -18,7 +17,6 @@ class ProductPage extends BasePage {
     const subCategoryLocator = this.page.locator(
       `//nav//li[a/span[text()='${category}']]//a[span[text()='${subCategory}']]`
     );
-    await subCategoryLocator.waitFor({ state: "visible" });
     await subCategoryLocator.hover();
   }
 
@@ -30,7 +28,6 @@ class ProductPage extends BasePage {
     const secondSubCategoryLocator = this.page.locator(
       `//nav//li[a/span[text()='${category}']]//a[span[text()='${subCategory}']]/../ul//a[span[text()='${secondSubCategory}']]`
     );
-    await secondSubCategoryLocator.waitFor({ state: "visible" });
     await secondSubCategoryLocator.click();
   }
 
